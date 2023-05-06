@@ -19,7 +19,7 @@ with st.container():
     for i, menu in enumerate(menus):
         buttons[menu] = cols[i].button(menu)
 
-st.json(buttons)
+# st.json(buttons)
 
 # 음료별 선택 개수 저장
 # cafe_dict = {'아메리카노': 0, '카페라떼': 0, '밀크티': 0}
