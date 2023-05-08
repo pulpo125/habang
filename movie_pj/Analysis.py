@@ -2,11 +2,17 @@ import streamlit as st
 import pandas as pd
 
 # 데이터 로드
-df = pd.read_csv('../data/movie_added.csv')
+df = pd.read_csv('data/movie_eda.csv')
+
+with st.sidebar:
+    add_radio = st.radio(
+        "Choose a shipping method",
+        ("Standard (5-15 days)", "Express (2-5 days)")
+    )
 
 # title
 st.image('https://static.amazon.jobs/teams/53/images/IMDb_Header_Page.jpg?1501027252')
-st.title('IMDB Top 250 Movies :movie_camera:')
+st.title(':movie_camera: IMDB Top 250 Movies')
 
 st.divider()
 
@@ -16,12 +22,13 @@ group_by_option = st.selectbox('Select the column : ', ['None'] + ['year'] + ['g
 
 cols = 'None'
 if group_by_option == 'None':
-    tmp_df = df[['rank', 'title', 'imbd_votes', 'imbd_rating']]
+    tmp_df = df[['title', 'imbd_votes', 'imbd_rating']]
+    tmp_df.index=tmp_df.index+1
+    tmp_df.index.name = 'rank'
     st.dataframe(tmp_df, width=700)
 else:
     tmp_df = df[group_by_option].value_counts()[:5].reset_index()
     tmp_df = pd.DataFrame(tmp_df).rename(columns={group_by_option:'count', 'index':group_by_option})
-    tmp_df.index = tmp_df.index + 1
     st.bar_chart(tmp_df, x = group_by_option, y = 'count')
 
     st.divider()
@@ -34,7 +41,9 @@ if cols == 'None':
     st.empty()
 
 else:
-    tmp_df = df[df[group_by_option].isin([cols])][['rank', 'title', 'imbd_votes', 'imbd_rating']]
+    tmp_df = df[df[group_by_option].isin([cols])][['title', 'imbd_votes', 'imbd_rating']]
+    tmp_df.index = tmp_df.index+1
+    tmp_df.index.name = 'rank'
     st.dataframe(tmp_df, width=700)
 
 
