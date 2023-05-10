@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML table</title>
+    <style>
+        table { border-collapse: collapse; } 
+        th, td{
+            border: 1px solid black;
+        }
+        th { background-color: aqua;}
+        #hong { color: blue; }
+        #kim { color: pink; }
+        .job{ color: green;}
+        .bold-font{ font-weight: bold;}
+    </style>
+</head>
+<body>
+    <h1>html table 실습</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>직업</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="hong">홍길동</td>
+                <td>30</td>
+                <td class="job bold-font">개발자</td>
+            </tr>
+            <tr>
+                <td id="kim">김영희</td>
+                <td>25</td>
+                <td class="job">디자이너</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
