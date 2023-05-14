@@ -45,16 +45,16 @@ with st.sidebar:
 try:
     # 장르 선택에 따른 데이터셋 추출
     if what_day_lst:
-        tmp_lst = []
+        genre_lst = []
         for genre in what_day_lst:
-            tmp_lst.append(genre_dic.get(genre))
+            genre_lst.append(genre_dic.get(genre))
 
-        genre_contains = df['genre'].str.contains("|".join(tmp_lst))
+        genre_contains = df['genre'].str.contains("|".join(genre_lst))
         df_genre = df[genre_contains]
 
     else:
         # 비교를 위해 임시로 df_genre를 만듦
-        df_genre = pd.DataFrame({'blank': [0,0]})
+        df_genre = pd.DataFrame({'tmp': [0,0]})
 
     ## Main
     # Title
