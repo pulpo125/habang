@@ -1,18 +1,6 @@
+-- 연도별 3사 앨범 판매량 1위 View 생성
+
 use stock_pj;
-
-select * from yearly_album_chart;
-
-
--- 2018년도 JYP 앨범 판매량 1위
-select *
-from yearly_album_chart as yac
-	join singer_agency as sa 
-    on yac.singer = sa.singer
-where yac.year = 2018 and agency_name = 'JYP'
-order by ranking
-limit 1;
-
--- drop view top_rank_2018;
 
 -- 2018년도 3사 앨범 판매량 1위
 CREATE VIEW top_rank_2018 as 
@@ -78,6 +66,3 @@ CREATE VIEW top_rank_2022 as
 );
 
 select * from top_rank_2022;
-
-
-

@@ -1,3 +1,4 @@
+-- create database stock_pj;
 use stock_pj;
 
 create table agency_stock (
@@ -23,7 +24,6 @@ create table yearly_album_chart (
     primary key (year, ranking),
     FOREIGN KEY (`singer`) REFERENCES `singer_agency` (`singer`)
 );
-
 
 -- drop table yearly_album_chart;
 -- drop table singer_agency;
